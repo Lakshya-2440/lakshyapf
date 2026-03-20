@@ -7,6 +7,28 @@ export default function AboutPage({ signals }) {
     ['GitHub', 'LinkedIn', 'Email'].includes(item.label),
   )
 
+  const mapNodes = [
+    { id: 'simplicity', label: 'Simplicity', x: 19, y: 27 },
+    { id: 'craft', label: 'Craft', x: 56, y: 17 },
+    { id: 'performance', label: 'Performance', x: 87, y: 32 },
+    { id: 'empathy', label: 'Empathy', x: 33, y: 61 },
+    { id: 'systems', label: 'Systems', x: 66, y: 56 },
+    { id: 'curiosity', label: 'Curiosity', x: 52, y: 84 },
+  ]
+
+  const mapLinks = [
+    ['simplicity', 'craft'],
+    ['craft', 'performance'],
+    ['simplicity', 'empathy'],
+    ['empathy', 'systems'],
+    ['systems', 'craft'],
+    ['systems', 'performance'],
+    ['empathy', 'curiosity'],
+    ['curiosity', 'systems'],
+  ]
+
+  const getNode = (id) => mapNodes.find((node) => node.id === id)
+
   return (
     <div className="page about-page">
       <section className="page-hero page-hero-alt">
@@ -18,22 +40,22 @@ export default function AboutPage({ signals }) {
               <span className="accent-serif"> not by accident.</span>
             </h1>
             <p className="hero-body">
-              The public work spans front-end systems, AI tools, campaign surfaces, 3D
-              experiments, and robotics-adjacent prototypes. The common thread is a bias for
-              specific interfaces with a point of view.
+              Human-centered maker blending design sense with engineering rigor. I turn complex
+              problems into simple, beautiful, and intuitive experiences from concept to
+              production.
             </p>
 
             <div className="hero-actions">
-              <a className="button primary" href={`mailto:${emailAddress}`}>
+              <Link className="button primary" to="/connect">
                 Start an email thread
-              </a>
+              </Link>
               <Link className="button secondary" to="/projects">
                 Review projects
               </Link>
             </div>
           </div>
 
-          <div className="availability-card" data-reveal>
+          <div className="availability-card availability-card-compact" data-reveal>
             <p className="eyebrow">Live profile snapshot</p>
             <div className="fact-list">
               <div>
@@ -47,6 +69,54 @@ export default function AboutPage({ signals }) {
               <div>
                 <span>Building since</span>
                 <strong>{signals.started}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-block philosophy-map-block">
+        <div className="container">
+          <div className="philosophy-map-surface" data-reveal>
+            <div className="philosophy-map-frame" role="img" aria-label="Philosophy map">
+              <p className="eyebrow">Philosophy map</p>
+              <svg
+                className="philosophy-map-svg"
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                {mapLinks.map(([from, to]) => {
+                  const fromNode = getNode(from)
+                  const toNode = getNode(to)
+
+                  if (!fromNode || !toNode) {
+                    return null
+                  }
+
+                  return (
+                    <line
+                      key={`${from}-${to}`}
+                      x1={fromNode.x}
+                      y1={fromNode.y}
+                      x2={toNode.x}
+                      y2={toNode.y}
+                    />
+                  )
+                })}
+              </svg>
+
+              <div className="philosophy-map-nodes">
+                {mapNodes.map((node) => (
+                  <div
+                    key={node.id}
+                    className="philosophy-node"
+                    style={{ left: `${node.x}%`, top: `${node.y}%` }}
+                  >
+                    <span aria-hidden="true" />
+                    <strong>{node.label}</strong>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -83,7 +153,7 @@ export default function AboutPage({ signals }) {
             </p>
             <div className="note-links">
               <a href={`mailto:${emailAddress}`}>{emailAddress}</a>
-              <Link to="/domains">Browse practice areas</Link>
+              <Link to="/projects#project-categories">Browse project categories</Link>
             </div>
           </aside>
         </div>

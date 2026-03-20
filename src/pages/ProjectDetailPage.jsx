@@ -34,8 +34,8 @@ export default function ProjectDetailPage() {
               <a className="button primary" href={project.repo} target="_blank" rel="noreferrer">
                 Open repository
               </a>
-              <Link className="button secondary" to={`/domains/${project.domainSlug}`}>
-                Explore domain page
+              <Link className="button secondary" to={`/projects?domain=${project.domainSlug}#project-categories`}>
+                Explore this category
               </Link>
               <Link className="button ghost" to="/projects">
                 Back to projects
@@ -120,7 +120,7 @@ export default function ProjectDetailPage() {
 
             {relatedProjects.length > 0 ? (
               <article className="fact-sheet" data-reveal>
-                <p className="eyebrow">Related in this domain</p>
+                <p className="eyebrow">Related in this category</p>
                 <div className="related-links">
                   {relatedProjects.map((item) => (
                     <Link key={item.slug} to={`/projects/${item.slug}`}>

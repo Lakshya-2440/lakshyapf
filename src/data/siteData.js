@@ -3,7 +3,6 @@ export const emailAddress = 'lakshyagupta2440@gmail.com'
 export const navigation = [
   { label: 'Home', to: '/' },
   { label: 'Projects', to: '/projects' },
-  { label: 'Domains', to: '/domains' },
   { label: 'Blog', to: '/blog' },
   { label: 'About', to: '/about' },
 ]

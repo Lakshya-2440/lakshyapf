@@ -58,7 +58,7 @@ export default function HomePage({ signals }) {
               <span className="card-label">Best starting points</span>
               <div className="domain-mini-grid compact">
                 {leadDomains.map((domain) => (
-                  <Link key={domain.slug} to={`/domains/${domain.slug}`}>
+                  <Link key={domain.slug} to={`/projects?domain=${domain.slug}#project-categories`}>
                     <strong>{domain.title}</strong>
                     <span>{domain.description}</span>
                   </Link>
@@ -95,9 +95,9 @@ export default function HomePage({ signals }) {
       <section className="section-block">
         <div className="container">
           <SectionHeading
-            eyebrow="Domain pages"
-            title="The rest of the work is organized by domain."
-            body="Each lane has its own page so the homepage stays focused and the broader range still remains easy to browse."
+            eyebrow="Project categories"
+            title="Different project types, one clear system."
+            body="Each category maps to a specific capability, now organized inside a single Projects hub."
           />
 
           <div className="domain-grid">

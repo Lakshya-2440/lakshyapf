@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 
-export default function DomainCard({ domain, compact = false }) {
+export default function DomainCard({ domain, compact = false, linkTo }) {
+  const destination = linkTo ?? `/projects?domain=${domain.slug}#project-categories`
+
   return (
     <article className={`domain-card tone-${domain.accent} ${compact ? 'compact' : ''}`} data-reveal>
       <div className="domain-card-topline">
@@ -16,8 +18,8 @@ export default function DomainCard({ domain, compact = false }) {
       </ul>
 
       <div className="domain-actions">
-        <Link className="button ghost" to={`/domains/${domain.slug}`}>
-          Explore this domain
+        <Link className="button ghost" to={destination}>
+          Explore this category
         </Link>
       </div>
     </article>

@@ -138,8 +138,8 @@ export default function BlogPage() {
               <Link className="button primary" to="/projects">
                 View projects
               </Link>
-              <Link className="button secondary" to="/domains">
-                Browse domains
+              <Link className="button secondary" to="/projects#project-categories">
+                Browse categories
               </Link>
             </div>
           </div>

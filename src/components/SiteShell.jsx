@@ -1,12 +1,10 @@
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
-import { emailAddress, navigation, socialLinks } from '../data/siteData'
+import { navigation, socialLinks } from '../data/siteData'
 import { useSiteEffects } from '../hooks/useSiteEffects'
 
 export default function SiteShell() {
   const location = useLocation()
-  const footerSocials = socialLinks.filter((item) =>
-    ['GitHub', 'LinkedIn', 'Email'].includes(item.label),
-  )
+  const footerSocials = socialLinks
 
   useSiteEffects(location)
 
@@ -17,7 +15,9 @@ export default function SiteShell() {
       <header className="site-header">
         <div className="container header-row">
           <Link className="brand" to="/">
-            <span className="brand-mark">LG</span>
+            <span className="brand-mark" aria-hidden="true">
+              <img src="/logo-mark.png" alt="" />
+            </span>
             <span className="brand-copy">
               <strong>Lakshya Gupta</strong>
               <span>Creative technologist / portfolio studio</span>
@@ -37,9 +37,9 @@ export default function SiteShell() {
             ))}
           </nav>
 
-          <a className="header-cta" href={`mailto:${emailAddress}`}>
+          <Link className="header-cta" to="/connect">
             Start a conversation
-          </a>
+          </Link>
         </div>
       </header>
 
@@ -57,14 +57,6 @@ export default function SiteShell() {
           </div>
 
           <div className="footer-links">
-            <div className="footer-nav">
-              {navigation.map((item) => (
-                <Link key={`footer-${item.to}`} to={item.to}>
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-
             <div className="footer-socials">
               {footerSocials.map((item) => (
                 <a key={item.label} href={item.href} target="_blank" rel="noreferrer">
