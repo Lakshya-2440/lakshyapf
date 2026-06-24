@@ -1,7 +1,31 @@
+import { AnimatePresence, motion } from 'framer-motion'
 import { Link, useSearchParams } from 'react-router-dom'
 import ProjectCard from '../components/ProjectCard'
 import SectionHeading from '../components/SectionHeading'
 import { domains, featuredProjects, projects } from '../data/siteData'
+
+const gridVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
+    },
+  },
+}
+
+const chipVariants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: (i) => ({
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delay: i * 0.04,
+      duration: 0.35,
+      ease: [0.2, 0.8, 0.2, 1],
+    },
+  }),
+}
 
 export default function ProjectsPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -58,16 +82,35 @@ export default function ProjectsPage() {
             </div>
           </div>
 
-          <div className="overview-card" data-reveal>
+          <motion.div
+            className="overview-card"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1], delay: 0.15 }}
+          >
             <p className="eyebrow">Project map</p>
             <div className="overview-stats">
               <div>
                 <span>Featured</span>
-                <strong>{featuredInView.length}</strong>
+                <motion.strong
+                  key={`featured-${featuredInView.length}`}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {featuredInView.length}
+                </motion.strong>
               </div>
               <div>
                 <span>Total</span>
-                <strong>{filteredProjects.length}</strong>
+                <motion.strong
+                  key={`total-${filteredProjects.length}`}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {filteredProjects.length}
+                </motion.strong>
               </div>
               <div>
                 <span>Categories</span>
@@ -79,7 +122,7 @@ export default function ProjectsPage() {
                 ? 'Showing all project types in one place.'
                 : 'Filtered to one category. Switch tabs to compare different project types.'}
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -88,125 +131,86 @@ export default function ProjectsPage() {
           <SectionHeading
             eyebrow="Project categories"
             title="All project types, one clean mechanism."
-            body="Use filters for quick switching, then scan category cards to understand where each type shines."
+            body="Use filters to quickly switch between domains and browse the archive."
           />
 
-          <div className="project-filter-row" data-reveal>
-            <button
+          <motion.div
+            className="project-filter-row"
+            initial="hidden"
+            animate="visible"
+            variants={{ visible: { transition: { staggerChildren: 0.04 } } }}
+          >
+            <motion.button
               type="button"
               className={`filter-chip ${activeDomain === 'all' ? 'is-active' : ''}`}
               onClick={() => setActiveDomain('all')}
+              variants={chipVariants}
+              custom={0}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
             >
-              All types ({projects.length})
-            </button>
+              All Projects ({projects.length})
+            </motion.button>
 
-            {domains.map((domain) => {
+            {domains.map((domain, i) => {
               const count = projects.filter((project) => project.domainSlug === domain.slug).length
 
               return (
-                <button
+                <motion.button
                   key={domain.slug}
                   type="button"
                   className={`filter-chip tone-${domain.accent} ${
                     activeDomain === domain.slug ? 'is-active' : ''
                   }`}
                   onClick={() => setActiveDomain(domain.slug)}
+                  variants={chipVariants}
+                  custom={i + 1}
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.97 }}
                 >
                   {domain.title} ({count})
-                </button>
+                </motion.button>
               )
             })}
-          </div>
+          </motion.div>
 
-          <div className="project-type-grid">
-            {domains.map((domain) => {
-              const domainProjects = projects.filter((project) => project.domainSlug === domain.slug)
-              const featuredCount = featuredProjects.filter(
-                (project) => project.domainSlug === domain.slug,
-              ).length
 
-              return (
-                <article
-                  key={domain.slug}
-                  className={`project-type-card tone-${domain.accent} ${
-                    activeDomain === domain.slug ? 'is-active' : ''
-                  }`}
-                  data-reveal
-                >
-                  <p className="eyebrow">{domain.strap}</p>
-                  <h3>{domain.title}</h3>
-                  <p>{domain.description}</p>
-
-                  <div className="project-type-stats">
-                    <span>{domainProjects.length} projects</span>
-                    <span>{featuredCount} featured</span>
-                  </div>
-
-                  <ul className="domain-points">
-                    {domain.capabilities.slice(0, 2).map((capability) => (
-                      <li key={`${domain.slug}-${capability}`}>{capability}</li>
-                    ))}
-                  </ul>
-
-                  <button
-                    type="button"
-                    className="button ghost"
-                    onClick={() => setActiveDomain(domain.slug)}
-                  >
-                    Show this type
-                  </button>
-                </article>
-              )
-            })}
-          </div>
         </div>
       </section>
 
       <section id="featured" className="section-block">
         <div className="container">
-          <SectionHeading
-            eyebrow="Featured case studies"
-            title={
-              activeDomain === 'all'
-                ? 'These should carry the first impression.'
-                : 'Featured work in this selected category.'
-            }
-            body="Each one tells a different story, so the page does not feel repetitive."
-          />
 
-          <div className="project-grid feature-grid">
-            {featuredInView.map((project) => (
-              <ProjectCard key={project.slug} project={project} />
-            ))}
-          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`featured-${activeDomain}`}
+              className="project-grid feature-grid"
+              variants={gridVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+            >
+              {featuredInView.map((project) => (
+                <ProjectCard key={project.slug} project={project} />
+              ))}
+            </motion.div>
+          </AnimatePresence>
 
           {featuredInView.length === 0 ? (
-            <p className="project-empty" data-reveal>
+            <motion.p
+              className="project-empty"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
               No featured cards in this category yet. The full list is still available below.
-            </p>
+            </motion.p>
           ) : null}
         </div>
       </section>
 
-      <section id="all-projects" className="section-block">
-        <div className="container">
-          <SectionHeading
-            eyebrow="All projects"
-            title={
-              activeDomain === 'all'
-                ? 'Everything in one archive.'
-                : 'Filtered archive for the selected type.'
-            }
-            body="Open a case study to dive deeper into challenge, build logic, and outcomes."
-          />
 
-          <div className="project-grid compact-grid">
-            {filteredProjects.map((project) => (
-              <ProjectCard key={project.slug} project={project} variant="compact" />
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   )
 }

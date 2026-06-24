@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import DomainCard from '../components/DomainCard'
 import ProjectCard from '../components/ProjectCard'
@@ -8,6 +9,16 @@ import {
   featuredProjects,
   operatingModes,
 } from '../data/siteData'
+
+const gridVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+}
 
 export default function HomePage({ signals }) {
   const leadDomains = domains.slice(0, 2)
@@ -78,11 +89,17 @@ export default function HomePage({ signals }) {
             body="The homepage only surfaces a few projects. The deeper archive lives one click away."
           />
 
-          <div className="project-grid compact-grid">
-            {featuredProjects.slice(0, 2).map((project) => (
+          <motion.div
+            className="project-grid compact-grid"
+            variants={gridVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+          >
+            {featuredProjects.slice(0, 4).map((project) => (
               <ProjectCard key={project.slug} project={project} variant="compact" />
             ))}
-          </div>
+          </motion.div>
 
           <div className="section-actions" data-reveal>
             <Link className="button primary" to="/projects">

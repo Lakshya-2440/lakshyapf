@@ -45,14 +45,10 @@ export default function ConnectPage() {
     <div className="page connect-page">
       <section className="page-hero page-hero-alt">
         <div className="container narrow-center" data-reveal>
-          <p className="eyebrow">Conversation / contact / social channels</p>
           <h1>
             Start a conversation
             <span className="accent-serif"> anywhere you prefer.</span>
           </h1>
-          <p className="hero-body">
-            Pick the channel that is easiest for you. Every profile below is active and checked.
-          </p>
         </div>
       </section>
 

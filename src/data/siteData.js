@@ -71,236 +71,50 @@ export const timeline = [
 
 export const domains = [
   {
-    slug: 'realtime-product-systems',
+    slug: 'ai-projects',
     accent: 'cyan',
-    title: 'Realtime Product Systems',
-    strap: 'Collaborative flows, live state, and product UX that stays clear under pressure.',
-    description:
-      'This track is about shared state, multiplayer presence, and interfaces that feel immediate instead of fragile.',
-    capabilities: [
-      'Realtime room architecture and interaction flows',
-      'Presence-led UX, cursors, avatars, and activity states',
-      'Product surfaces that explain complexity without flattening it',
-    ],
-    idealBriefs: [
-      'Collaborative tools',
-      'Dashboards with live state',
-      'Interactive products that need strong UX hierarchy',
-    ],
+    title: 'AI / LLM / RAG',
+    strap: 'Intelligent systems built with language models and generative architectures.',
+    description: 'Focusing on practical implementations of large language models, retrieval systems, and generative tools.',
+    capabilities: ['LLM integration', 'Retrieval-Augmented Generation (RAG)', 'AI-powered workflow automation'],
+    idealBriefs: ['AI-first SaaS products', 'Intelligent internal tools', 'Generative media workflows']
   },
   {
-    slug: 'spatial-interfaces-and-simulation',
+    slug: 'computer-vision',
     accent: 'orange',
-    title: 'Spatial Interfaces and Simulation',
-    strap: '3D systems, motion-led interfaces, and experiments that treat the screen like a scene.',
-    description:
-      'This domain covers spatial UI language, scene composition, and prototypes that think in depth, motion, and control.',
-    capabilities: [
-      '3D interface concepts and spatial navigation',
-      'Simulation-minded prototypes with physical logic',
-      'Interface motion that supports structure instead of decoration',
-    ],
-    idealBriefs: [
-      'Immersive product concepts',
-      'Experimental UI studies',
-      'Robotics and hardware-adjacent visual systems',
-    ],
+    title: 'Computer Vision / Open Source Contribution',
+    strap: 'Perceptual systems, gesture tracking, and spatial understanding.',
+    description: 'Experiments and applications leveraging visual data, edge computing, and spatial analysis to build new input paradigms.',
+    capabilities: ['Real-time gesture recognition', 'OpenCV and MediaPipe integration', 'Spatial computing interfaces'],
+    idealBriefs: ['Interactive installations', 'Hardware-adjacent prototypes', 'Spatial interaction studies']
   },
   {
-    slug: 'ai-tools-and-intelligent-workflows',
+    slug: 'machine-learning',
     accent: 'lime',
-    title: 'AI Tools and Intelligent Workflows',
-    strap: 'Usefulness-first AI interfaces with retrieval, automation, and real product framing.',
-    description:
-      'The emphasis here is not AI theater. It is AI that helps someone do something faster, more clearly, or more intelligently.',
-    capabilities: [
-      'RAG-powered interfaces and applied retrieval',
-      'Tool-like workflows with prompt-aware UX',
-      'Product framing around actual usefulness rather than trend-chasing',
-    ],
-    idealBriefs: [
-      'Internal tools',
-      'Research copilots',
-      'Workflow accelerators and applied AI products',
-    ],
+    title: 'Machine Learning',
+    strap: 'Core modeling, ranking systems, and data-driven infrastructure.',
+    description: 'Applied machine learning engineering, focusing on evaluation, ranking, search, and algorithmic optimization.',
+    capabilities: ['Search and ranking models (Learning-to-rank)', 'Model evaluation and red-teaming', 'Predictive analytics pipelines'],
+    idealBriefs: ['Search infra optimization', 'ML ops and evaluation tooling', 'Data-intensive products']
   },
   {
-    slug: 'campaigns-art-direction-and-web-art',
+    slug: 'product-management',
     accent: 'rose',
-    title: 'Campaigns, Art Direction, and Web Art',
-    strap: 'Editorial landing pages, expressive front-end work, and browser-native visual worlds.',
-    description:
-      'This is where pace, composition, typography, and atmosphere take the lead without losing engineering discipline.',
-    capabilities: [
-      'Launch pages with story and pacing',
-      'Creative coding and CSS-driven visuals',
-      'Art direction systems that keep the site feeling authored',
-    ],
-    idealBriefs: [
-      'Brand launches',
-      'Creative portfolio work',
-      'Visually ambitious marketing pages',
-    ],
-  },
+    title: 'Product Management',
+    strap: 'Detailed analyses, recreations, and critical product thinking.',
+    description: 'Breaking down successful products and building full-stack applications that demonstrate end-to-end product intuition.',
+    capabilities: ['Full-stack architecture recreation', 'Product UX analysis', 'System design implementations'],
+    idealBriefs: ['Zero-to-one product builds', 'Complex frontend system design', 'MVP rapid prototyping']
+  }
 ]
 
 export const projects = [
   {
-    slug: 'collaborative-canvas',
-    accent: 'cyan',
-    featured: true,
-    year: '2025',
-    name: 'Collaborative Canvas',
-    strap: 'Realtime drawing room built for shared presence and low-friction creativity.',
-    summary:
-      'A multiplayer drawing space that turns collaboration into the main interaction model instead of a technical afterthought.',
-    description:
-      'This project shows product thinking, socket-driven architecture, and interface restraint working together in one coherent build.',
-    role: 'Realtime product design and engineering',
-    repo: 'https://github.com/Lakshya-2440/canvas_collab',
-    domainSlug: 'realtime-product-systems',
-    stack: ['React', 'TypeScript', 'Socket.io', 'Node.js', 'Custom CSS'],
-    artLines: ['86%', '42%', '74%', '62%'],
-    outcomes: [
-      'Live room-based sync for shared drawing sessions',
-      'Presence cues with cursors, avatars, and multiplayer clarity',
-      'A product surface that feels social rather than merely technical',
-    ],
-    challenge:
-      'Make collaboration feel instant and inviting while keeping the interaction model understandable at a glance.',
-    buildNarrative:
-      'The build leans on socket-based room logic, lightweight interface chrome, and presence signals that make the session feel inhabited.',
-    recruiterSignal:
-      'Signals that complex state can be translated into a product surface that looks calm, useful, and deliberate.',
-    idealNextStep:
-      'A natural extension would be richer asset handling, shareable workspaces, and collaboration history.',
-  },
-  {
-    slug: '3d-os',
-    accent: 'orange',
-    featured: true,
-    year: '2025',
-    name: '3D OS',
-    strap: 'A spatial interface study that treats the desktop as an explorable scene.',
-    summary:
-      'Instead of stacking windows on a flat plane, this experiment imagines the desktop as a 3D environment with depth and motion.',
-    description:
-      'It broadens the portfolio signal from standard app work into interface worldbuilding, motion logic, and scene-first UI thinking.',
-    role: 'Concept development, interface design, and front-end experimentation',
-    repo: 'https://github.com/Lakshya-2440/3D_OS',
-    domainSlug: 'spatial-interfaces-and-simulation',
-    stack: ['JavaScript', '3D UI', 'Interaction Design', 'Frontend Experiments'],
-    artLines: ['78%', '56%', '39%', '94%'],
-    outcomes: [
-      'A spatial navigation model rather than a flat document stack',
-      'More cinematic motion language than most product interfaces attempt',
-      'Clear evidence of experimentation beyond commodity UI patterns',
-    ],
-    challenge:
-      'Push an interface into three dimensions without losing all sense of orientation, hierarchy, or usability.',
-    buildNarrative:
-      'The value is in the study itself: layout becomes staging, motion becomes information, and the browser becomes a design lab.',
-    recruiterSignal:
-      'Shows that the work is capable of concept generation and experiential thinking, not just implementation.',
-    idealNextStep:
-      'This direction could evolve into immersive dashboards, installations, or product demos that need a stronger sense of scene.',
-  },
-  {
-    slug: '3d-robot-assembly',
-    accent: 'orange',
-    featured: true,
-    year: '2024',
-    name: '3D Robot Assembly',
-    strap: 'Simulation-led prototype for assembly logic, spatial reasoning, and systems thinking.',
-    summary:
-      'A robotics-flavored build focused on structure, sequencing, and interface logic that relates to physical behavior.',
-    description:
-      'It adds a more technical and mechanical edge to the portfolio by showing interest in tools, systems, and process.',
-    role: 'Prototype design and systems exploration',
-    repo: 'https://github.com/Lakshya-2440/3D-Robot-Assembly',
-    domainSlug: 'spatial-interfaces-and-simulation',
-    stack: ['Python', 'Simulation', '3D Logic', 'Robotics'],
-    artLines: ['68%', '89%', '46%', '78%'],
-    outcomes: [
-      'A stronger connection between digital logic and physical assembly behavior',
-      'Simulation thinking that expands beyond front-end execution',
-      'A portfolio story that touches engineering curiosity, not only visuals',
-    ],
-    challenge:
-      'Translate physical assembly logic into a system someone can reason about through a digital interface.',
-    buildNarrative:
-      'The project frames code as a tool for understanding sequence, dependency, and structure, not just output.',
-    recruiterSignal:
-      'Signals comfort with abstract systems, technical curiosity, and workflows closer to engineering tools.',
-    idealNextStep:
-      'This could move toward interactive training, robotic planning visualizations, or richer simulation dashboards.',
-  },
-  {
-    slug: 'css-art-museum',
-    accent: 'rose',
-    featured: true,
-    year: '2024',
-    name: 'CSS Art Museum',
-    strap: 'A browser-native gallery where front-end craft is treated like a visual medium.',
-    summary:
-      'An expressive gallery of HTML, CSS, and JavaScript work that makes visual experimentation the core product.',
-    description:
-      'This keeps the portfolio from reading too narrowly technical by showing that taste, curation, and visual authorship are active strengths.',
-    role: 'Visual direction, curation, and front-end implementation',
-    repo: 'https://github.com/Lakshya-2440/css-art-museum',
-    domainSlug: 'campaigns-art-direction-and-web-art',
-    stack: ['HTML', 'CSS', 'JavaScript', 'Creative Coding'],
-    artLines: ['55%', '88%', '48%', '66%'],
-    outcomes: [
-      'A stronger visual signature than standard developer portfolio work',
-      'Clear evidence that craft and experimentation matter in the process',
-      'A useful proof point for campaign work, creative coding, and art direction',
-    ],
-    challenge:
-      'Keep the work expressive and visual without letting it collapse into novelty without intent.',
-    buildNarrative:
-      'The museum framing turns code into exhibition design, where pacing, texture, and composition matter as much as the underlying implementation.',
-    recruiterSignal:
-      'Signals that front-end is not being treated as a skin but as a serious creative discipline.',
-    idealNextStep:
-      'This direction maps well to branded experiences, campaigns, installations, and editorial web stories.',
-  },
-  {
-    slug: 'rag-llm-chatbot',
-    accent: 'lime',
-    featured: false,
-    year: '2025',
-    name: 'RAG LLM Chatbot',
-    strap: 'Applied retrieval workflow focused on usefulness instead of AI theater.',
-    summary:
-      'An AI-fluent tool that explores retrieval-backed conversation and the shape of practical assistant UX.',
-    description:
-      'It gives the portfolio a credible applied-AI thread without drifting away from product thinking.',
-    role: 'AI workflow prototyping and interface design',
-    repo: 'https://github.com/Lakshya-2440/rag-llm-chatbot',
-    domainSlug: 'ai-tools-and-intelligent-workflows',
-    stack: ['Python', 'LLM', 'RAG', 'Workflow Design'],
-    artLines: ['82%', '37%', '68%', '54%'],
-    outcomes: [
-      'Retrieval-oriented product thinking',
-      'A tool-shaped AI interaction model',
-      'A stronger applied-systems thread inside the portfolio',
-    ],
-    challenge:
-      'Make an AI interface feel dependable, structured, and genuinely helpful rather than vague or performative.',
-    buildNarrative:
-      'The value is in how retrieval, response quality, and information architecture are framed as a usable workflow.',
-    recruiterSignal:
-      'Shows an ability to treat AI as product infrastructure rather than a decorative feature.',
-    idealNextStep:
-      'A next version could include source controls, context management, and team-facing workflow surfaces.',
-  },
-  {
     slug: 'glitchy-cube-ar',
     accent: 'lime',
-    featured: false,
+    featured: true,
     year: '2024',
-    name: 'glitchy_cube_AR',
+    name: 'Glitchy AR cube',
     strap: 'A small AR-driven visual experiment with a more image-led interaction language.',
     summary:
       'A proof point that the work can move into spatial overlays, perception, and more playful visual computing.',
@@ -308,7 +122,7 @@ export const projects = [
       'It adds a lightweight but useful edge to the portfolio by widening the medium beyond the browser window.',
     role: 'Experiment design and visual prototyping',
     repo: 'https://github.com/Lakshya-2440/glitchy_cube_AR',
-    domainSlug: 'spatial-interfaces-and-simulation',
+    domainSlug: 'computer-vision',
     stack: ['AR', 'Visual Systems', 'Creative Tech'],
     artLines: ['61%', '78%', '35%', '58%'],
     outcomes: [
@@ -325,65 +139,241 @@ export const projects = [
     idealNextStep:
       'This could evolve into product demos, installation concepts, or AR-enhanced storytelling surfaces.',
   },
+
+
   {
-    slug: 'dietcokelovers-landing',
-    accent: 'rose',
-    featured: false,
-    year: '2024',
-    name: 'dietcokelovers_landing',
-    strap: 'Narrative-led landing page with mood, pacing, and stronger art direction.',
+    slug: 'ask-my-notes',
+    accent: 'lime',
+    featured: true,
+    year: '2026',
+    name: 'Ask My Notes',
+    strap: 'AI study assistant that answers strictly from your own uploaded notes — no hallucinations.',
     summary:
-      'A launch-page style build where typography, sequencing, and visual hooks do the work of persuasion.',
+      'An end-to-end RAG pipeline that grounds every answer in user-uploaded material, refusing to respond when the answer is not present.',
     description:
-      'It proves there is range beyond tools and product UI, especially for brands or founders who need memorable surfaces.',
-    role: 'Landing page concept, copy pacing, and front-end execution',
-    repo: 'https://github.com/Lakshya-2440/dietcokelovers_landing',
-    domainSlug: 'campaigns-art-direction-and-web-art',
-    stack: ['React', 'Motion', 'Visual Direction', 'CSS'],
-    artLines: ['74%', '44%', '83%', '52%'],
+      'This project demonstrates production RAG architecture at scale: subject-scoped isolation, citation-backed answers, knowledge gap mapping, practice engines, and AI viva simulation — serving 700+ first-generation learners at zero cost.',
+    role: 'Full-stack AI engineering and product design',
+    repo: 'https://github.com/Lakshya-2440/AskMyNotes',
+    liveUrl: 'https://bestaskmynotes.vercel.app',
+    domainSlug: 'ai-projects',
+    images: ['/askmynotes.png', '/askmynotes-case-study.png'],
+    stack: ['Python', 'LangChain', 'OpenAI', 'Pinecone', 'RAG'],
+    artLines: ['92%', '58%', '78%', '44%'],
+    metrics: ['700+ users', '<100ms response', 'Zero cost'],
     outcomes: [
-      'A stronger campaign and launch-page story',
-      'Pacing-driven interface composition',
-      'Evidence of copy, layout, and mood working together',
+      'Hallucination-mitigated AI tutoring with citation-backed answers',
+      'Subject-scoped context isolation prevents cross-topic leakage',
+      'Knowledge gap mapping tracks strong, weak, and unknown concept areas',
+      'Practice engine with MCQs, flashcards, and AI viva mode',
     ],
     challenge:
-      'Make a landing page feel authored and culturally specific rather than like a generic startup template.',
+      'Build an AI study tool that students can actually trust — where every answer is verifiable and the system explicitly refuses when content is missing.',
     buildNarrative:
-      'The page works through atmosphere, contrast, and sequencing, treating scroll like storytelling instead of content dumping.',
+      'The architecture separates concerns cleanly: upload → subject-based indexing → context retrieval → citation-grounded generation. Voice interaction adds accessibility for hands-free study sessions.',
     recruiterSignal:
-      'Signals that branded experiences and high-attention launch pages are also in range.',
+      'Demonstrates production RAG at scale with real users, hallucination mitigation, and social impact across South and Southeast Asia.',
     idealNextStep:
-      'This naturally leads to bolder campaign sites, product launches, and fashion- or culture-adjacent digital work.',
+      'Expand into collaborative study groups, multi-modal note support (images, diagrams), and institutional deployment.',
   },
   {
-    slug: '3d-gesture-drone-simulator',
-    accent: 'cyan',
-    featured: false,
-    year: '2024',
-    name: '3D Gesture Drone Simulator',
-    strap: 'Control-systems prototype that connects movement, simulation, and interface response.',
+    slug: 'virtual-robos',
+    accent: 'orange',
+    featured: true,
+    year: '2026',
+    name: 'Virtual Robos',
+    strap: 'Zero-install browser-based robotics playground with gesture control and real-time simulation.',
     summary:
-      'A more physical interaction model that points toward control systems, simulation, and motion-aware tooling.',
+      'A multi-experience robotics sandbox: 2D simulator, 3D assembly, and maze navigation — all running natively in the browser with gesture input.',
     description:
-      'It reinforces the portfolio theme that interface work can be tied to bodies, space, and behavior instead of static screens alone.',
-    role: 'Simulation concept and interaction prototyping',
-    repo: 'https://github.com/Lakshya-2440/3D-Gesture-drone-simulator',
-    domainSlug: 'realtime-product-systems',
-    stack: ['Simulation', 'Gesture Control', '3D Systems'],
-    artLines: ['63%', '71%', '51%', '86%'],
+      'Pushes browser-native simulation further than most projects attempt. Modular robot assembly, LiDAR simulation, gesture-driven control via MediaPipe hand tracking, procedural maze generation, and live telemetry — with zero installation required.',
+    role: 'Simulation architecture and interaction design',
+    repo: 'https://github.com/alphaonelabs/alphaonelabs-virtual-robotics-playground',
+    liveUrl: 'https://virtualrobos.vercel.app',
+    domainSlug: 'computer-vision',
+    stack: ['OpenCV.js', 'JavaScript', 'WebRTC', 'HTML5 Canvas', 'MediaPipe'],
+    artLines: ['88%', '42%', '76%', '62%'],
+    metrics: ['7,800+ users', '<50ms latency', '30fps'],
     outcomes: [
-      'A more embodied input model',
-      'Stronger overlap between interaction design and control systems',
-      'A portfolio point that feels technical, physical, and exploratory',
+      'HSV color-space filtering and contour detection at under 50ms latency',
+      'Gesture-driven control via convexity defect analysis on hand contours',
+      'Modular robot assembly with LiDAR, camera, and arm simulation',
+      'Hardware-free robotics education for under-resourced schools',
     ],
     challenge:
-      'Design around movement and control feedback while still keeping the system legible.',
+      'Deliver a meaningful robotics education experience entirely in the browser — no downloads, no hardware, no build system.',
     buildNarrative:
-      'The simulator shows an interest in interfaces that respond to gesture and physical intent, not only clicks and taps.',
+      'Three simulation paths (2D, 3D assembly, 3D maze) share a modular robot system. MediaPipe hand tracking enables gesture control with keyboard fallback. Gaussian blur, morphological ops, and frame-skipping keep performance smooth.',
     recruiterSignal:
-      'Signals range across simulation, input experimentation, and human-machine interaction thinking.',
+      'Signals deep comfort with real-time Canvas rendering, computer vision pipelines, gesture input, and hardware-adjacent simulation — all in pure browser tech.',
     idealNextStep:
-      'This could mature into training tools, motion dashboards, or physical-computing demonstrations.',
+      'Add curriculum-aligned lesson plans, multiplayer collaboration, and physics engine integration for more realistic simulation.',
+  },
+  {
+    slug: 'science-lab',
+    accent: 'orange',
+    featured: true,
+    year: '2026',
+    name: 'Science Lab',
+    strap: 'Open-source virtual laboratory for physics and chemistry simulations — no install required.',
+    summary:
+      'A browser-based virtual science platform with interactive simulations for pendulum physics, circuit design, and titration experiments.',
+    description:
+      'Brings hands-on science to students who lack access to physical labs. Open-source, zero-install, and already used by 1,600+ students across India, Vietnam, Indonesia, and the Philippines.',
+    role: 'Frontend simulation design and open-source development',
+    repo: 'https://github.com/Lakshya-2440/science-lab',
+    liveUrl: 'https://bestsciencelab.vercel.app',
+    domainSlug: 'computer-vision',
+    stack: ['JavaScript', 'React', 'HTML5 Canvas', 'Open Source'],
+    artLines: ['72%', '56%', '84%', '38%'],
+    metrics: ['1,600+ students', '4 countries'],
+    outcomes: [
+      'Interactive physics simulations: pendulum motion, electrical circuits',
+      'Chemistry simulations: titration experiments with real-time feedback',
+      'Zero-install access broadens reach to under-resourced schools',
+      'Open-source model encourages community contributions',
+    ],
+    challenge:
+      'Create science simulations that are accurate enough for education yet simple enough to run on any device without installation.',
+    buildNarrative:
+      'HTML5 Canvas powers the simulation rendering while React handles the UI. Each experiment is self-contained with its own physics model and interactive controls.',
+    recruiterSignal:
+      'Shows ability to translate complex scientific models into accessible, interactive web experiences with real educational impact.',
+    idealNextStep:
+      'Add more experiments, integrate with learning management systems, and build teacher dashboards for tracking student progress.',
+  },
+  {
+    slug: 'repograph',
+    accent: 'lime',
+    featured: true,
+    year: '2026',
+    name: 'RepoGraph',
+    strap: 'Explainable AI code infrastructure — AST-level analysis fused with knowledge graph traversal.',
+    summary:
+      'Converts any GitHub repository into an explorable knowledge graph with code structure, dependency links, git history, and AI-assisted analysis.',
+    description:
+      'A full-stack auditable AI reasoning system. AST-level code embeddings, Neo4j knowledge graph traversal, force-graph visualization, repository Q&A via RAG, and deterministic insight generation — all designed with responsible AI principles aligned with ASEAN digital governance.',
+    role: 'Full-stack architecture and AI systems design',
+    repo: 'https://github.com/Lakshya-2440/RepoGraph',
+    liveUrl: 'https://bestrepograph.vercel.app',
+    domainSlug: 'ai-projects',
+    stack: ['TypeScript', 'React', 'Express', 'PostgreSQL', 'OpenRouter AI'],
+    artLines: ['82%', '66%', '48%', '94%'],
+    metrics: ['1,800+ users', 'Full-stack', 'Graph viz'],
+    outcomes: [
+      'AST-level code parsing with Babel for JS/TS symbol extraction',
+      'Force-graph visualization of repository structure and dependencies',
+      'RAG-powered repository Q&A with context-aware retrieval',
+      'Deterministic insights: entry points, bottlenecks, hot files, ownership patterns',
+    ],
+    challenge:
+      'Make AI reasoning about code auditable and explainable — not a black box, but a traversable knowledge graph.',
+    buildNarrative:
+      'Backend analyzer parses repositories into graph nodes (files, functions, classes, imports) and edges (dependencies, call relationships). Frontend renders force-directed graphs with search, chat, and insight exploration surfaces.',
+    recruiterSignal:
+      'Demonstrates production-grade full-stack engineering, graph databases, AST parsing, and applied AI — with responsible AI design principles.',
+    idealNextStep:
+      'Expand language support beyond JS/TS, add collaborative annotation, and integrate with CI/CD for automated code health monitoring.',
+  },
+  {
+    slug: 'llm-evaluation',
+    accent: 'lime',
+    featured: true,
+    year: '2026',
+    name: 'LLM Evaluation Platform',
+    strap: 'Automated adversarial testing framework with MART prompt mutation and exportable audit reports.',
+    summary:
+      'A full-stack LLM red-teaming platform that generates 500+ adversarial prompts across 6 failure categories, with DeepEval metrics, LangSmith tracing, and exportable audit artifacts.',
+    description:
+      'Goes beyond simple prompt testing. MART-style multi-round mutation loops evolve prompts based on prior failures. Judge scoring, model comparison, violation reduction tracking, and CI integration templates make this a production-grade safety evaluation framework.',
+    role: 'AI safety engineering and full-stack development',
+    repo: 'https://github.com/Lakshya-2440/LLM_EVALUATION',
+    domainSlug: 'ai-projects',
+    images: ['/llm-eval-1.png', '/llm-eval-2.jpg', '/llm-eval-3.png'],
+    stack: ['Python', 'FastAPI', 'TypeScript', 'React', 'DeepEval', 'LangSmith'],
+    artLines: ['76%', '52%', '88%', '40%'],
+    metrics: ['528 prompts', '6 categories', '0% violations'],
+    outcomes: [
+      'Tested 528 adversarial prompts across hallucination, safety, bias, robustness, privacy, and tool misuse',
+      'MART-style prompt mutation evolves attacks based on prior round failures',
+      'Identified 20.5% baseline violation rate, reduced to 0.0% after policy guardrails',
+      'Exportable audit reports in JSON, CSV, Markdown, and PDF formats',
+    ],
+    challenge:
+      'Build a systematic, repeatable framework for finding where LLMs fail — not ad-hoc testing, but engineered adversarial evaluation.',
+    buildNarrative:
+      'Each evaluation run cycles through seed templates → domain variants → pressure patterns → MART mutations. DeepEval custom metrics score each probe, LangSmith traces the full attack chain, and comparison mode tracks improvement across runs.',
+    recruiterSignal:
+      'Signals deep understanding of LLM failure modes, adversarial testing methodology, and production safety engineering — not just building with AI, but evaluating it rigorously.',
+    idealNextStep:
+      'Expand attack taxonomy, add multi-model parallel evaluation, and integrate with model deployment pipelines for continuous safety monitoring.',
+  },
+  {
+    slug: 'jobtrackr',
+    accent: 'cyan',
+    featured: true,
+    year: '2026',
+    name: 'JobTrackr',
+    strap: 'Full-stack job tracker with Kanban pipeline, RAG assistant, and analytics dashboard.',
+    summary:
+      'A production-ready application tracker with drag-and-drop Kanban workflow, JWT authentication, resume uploads to AWS S3, and a RAG assistant that gives hallucination-free career advice.',
+    description:
+      'Demonstrates end-to-end product engineering: Prisma ORM with Neon PostgreSQL, TanStack Query for state management, Zustand stores, Zod validation on both client and server, rate limiting, and a context-only RAG assistant that refuses to fabricate information.',
+    role: 'Full-stack product engineering',
+    repo: 'https://github.com/Lakshya-2440/job_tracker',
+    domainSlug: 'ai-projects',
+    images: ['/jobtrackr-1.png', '/jobtrackr-2.png', '/jobtrackr-3.png', '/jobtrackr-4.png', '/jobtrackr-5.png'],
+    stack: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma'],
+    artLines: ['84%', '62%', '54%', '78%'],
+    metrics: ['Full CRUD', 'RAG assistant', 'JWT auth'],
+    outcomes: [
+      'Drag-and-drop Kanban pipeline: Wishlist → Applied → Interview → Offer → Rejected',
+      'RAG assistant grounded in job application records — context-only enforcement',
+      'Analytics dashboard with status distribution, trend charts, and response rates',
+      'Resume upload pipeline with Multer validation and Cloudinary storage',
+    ],
+    challenge:
+      'Build a job tracker that goes beyond CRUD — with AI assistance that is genuinely useful but never hallucinates career advice.',
+    buildNarrative:
+      'Server and client share Zod schemas for type-safe validation. TanStack Query handles caching and optimistic updates. The RAG assistant retrieves relevant application records, embeds them, and generates grounded answers — with safe fallback when the AI provider is unavailable.',
+    recruiterSignal:
+      'Signals production-grade full-stack engineering: auth flows, database migrations, drag-and-drop UX, file uploads, API design, and responsible AI integration in one cohesive product.',
+    idealNextStep:
+      'Add calendar integration, email notifications, collaborative team tracking, and Playwright end-to-end tests.',
+  },
+  {
+    slug: 'search-ranking',
+    accent: 'lime',
+    featured: true,
+    year: '2026',
+    name: 'Search Ranking Model',
+    strap: 'Production-grade Learning-to-Rank system using LambdaMART and IPW position bias correction.',
+    summary:
+      'A complete, production-ready search ranking pipeline that improves NDCG@10 by 56.5% over traditional BM25 baselines. It uses LambdaMART (XGBoost) to intelligently combine textual relevance features with user interaction signals, optimizing directly for ranking quality.',
+    description:
+      'This project implements a rigorous, end-to-end Machine Learning pipeline for search. It moves beyond standard semantic search by extracting graded relevance labels (0-4) from user clicks, dwell times, and skip rates. Crucially, it applies Inverse Propensity Weighting (IPW) to correct for the inherent position bias in click data. The system features a 22-feature pipeline, time-based dataset splitting to prevent data leakage, and comprehensive offline evaluation including ablation studies and A/B test simulations.',
+    role: 'ML Engineering & Information Retrieval',
+    repo: 'https://github.com/Lakshya-2440/search_ranking',
+    liveUrl: 'https://huggingface.co/spaces/la7shya/search-ranking-model',
+    domainSlug: 'machine-learning',
+    images: ['/search_ranking_1.png', '/search_ranking_2.png'],
+    stack: ['Python', 'XGBoost (LambdaMART)', 'Pandas', 'Scikit-learn', 'Pytest', 'Gradio'],
+    artLines: ['68%', '82%', '44%', '72%'],
+    metrics: ['+56.5% NDCG@10', '+79.8% MRR', '+89.9% MAP'],
+    outcomes: [
+      'Achieved NDCG@10 of 0.6292 (vs BM25 baseline of 0.4020) by optimizing the rank:ndcg objective.',
+      'Extracted relevance labels from 2M+ synthetic query-document interactions.',
+      'Engineered 22 distinct features across three families: Query (TF-IDF, length, type), Document (PageRank, freshness, anchor text), and Interaction (CTR, dwell time, IPW weights).',
+      'Implemented robust offline evaluation including an ablation study to measure feature importance and bias analysis to quantify IPW effectiveness.',
+      'Built a Shadow Deployment simulator and A/B Testing framework (simulating a 5% traffic split) to validate model stability before production rollout.'
+    ],
+    challenge:
+      'Standard vector or keyword search ignores vital behavioral signals, while naive click-tracking models create feedback loops where top-ranked items get clicked simply because they are at the top. The core challenge was building a system that learns genuine relevance from user behavior while strictly correcting for position bias.',
+    buildNarrative:
+      'The pipeline treats search strictly as a ranking optimization problem. Raw interaction logs are first mapped to graded relevance labels using click models, factoring in dwell time. A 70/15/15 time-based split ensures the model never peeks at future data. The LambdaMART model is trained with up to 1000 trees using early stopping, a learning rate of 0.05, and heavy regularization (L1/L2) to prevent overfitting on the 22 engineered features.',
+    recruiterSignal:
+      'Demonstrates advanced, applied ML engineering: rigorous evaluation methodology (time-based splits, ablation studies), bias correction algorithms (IPW), and a clear focus on deployment readiness (shadow deploy, statistical A/B testing frameworks).',
+    idealNextStep:
+      'Scaling the retrieval stage to use a two-tower dense retrieval model (e.g., cross-encoders), while keeping LambdaMART strictly as the second-stage re-ranker for the top 100 candidates.',
   },
 ]
 
