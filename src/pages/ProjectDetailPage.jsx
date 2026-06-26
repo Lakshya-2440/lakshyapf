@@ -202,6 +202,109 @@ export default function ProjectDetailPage() {
               </div>
             )}
 
+            {project.customSections && project.customSections.map((section, idx) => (
+              <motion.div
+                key={`custom-section-${idx}`}
+                className="simple-text-section custom-detail-section"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5 }}
+                style={{ marginBottom: '4rem' }}
+              >
+                {section.title && (
+                  <p className="eyebrow" style={{ marginBottom: '1.25rem', color: 'var(--text-secondary)', fontSize: '1.125rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                    {section.title}
+                  </p>
+                )}
+                {section.subtitle && (
+                  <h3 style={{ marginBottom: '1rem', color: 'var(--text)', fontSize: '1.5rem', fontWeight: '700' }}>
+                    {section.subtitle}
+                  </h3>
+                )}
+                {section.content && (
+                  <p style={{ fontSize: '1.1875rem', lineHeight: '1.7', color: 'var(--text)', whiteSpace: 'pre-line', marginBottom: '1.5rem' }}>
+                    {section.content}
+                  </p>
+                )}
+                {section.code && (
+                  <pre style={{ backgroundColor: 'var(--surface)', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--border)', overflowX: 'auto', fontSize: '0.875rem', lineHeight: '1.4', color: 'var(--text)', marginBottom: '1.5rem', fontFamily: 'monospace' }}>
+                    {section.code}
+                  </pre>
+                )}
+                {section.table && (
+                  <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '1rem', border: '1px solid var(--border)', borderRadius: '8px', overflow: 'hidden' }}>
+                      <thead>
+                        <tr style={{ backgroundColor: 'var(--surface)', borderBottom: '1px solid var(--border)' }}>
+                          {section.table.headers.map((h, i) => (
+                            <th key={i} style={{ padding: '1rem', fontWeight: '600', color: 'var(--text-secondary)' }}>{h}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {section.table.rows.map((row, rIdx) => (
+                          <tr key={rIdx} style={{ borderBottom: '1px solid var(--border)' }}>
+                            {row.map((cell, cIdx) => (
+                              <td key={cIdx} style={{ padding: '1rem', color: 'var(--text)' }}>{cell}</td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+                {section.list && (
+                  <ul style={{ marginTop: '0.5rem', marginBottom: '1.5rem', paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    {section.list.map((item, lIdx) => (
+                      <li key={lIdx} style={{ fontSize: '1.125rem', lineHeight: '1.6', color: 'var(--text)' }}>
+                        {item.label && <strong style={{ color: 'var(--accent)' }}>{item.label}: </strong>}
+                        {item.text}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {section.subsections && section.subsections.map((sub, sIdx) => (
+                  <div key={sIdx} style={{ marginTop: '2.5rem', marginBottom: '1.5rem' }}>
+                    {sub.title && <h4 style={{ fontSize: '1.35rem', fontWeight: '700', color: 'var(--text)', marginBottom: '0.75rem' }}>{sub.title}</h4>}
+                    {sub.content && <p style={{ fontSize: '1.125rem', lineHeight: '1.65', color: 'var(--text)', whiteSpace: 'pre-line', marginBottom: '1rem' }}>{sub.content}</p>}
+                    {sub.list && (
+                      <ul style={{ marginTop: '0.5rem', marginBottom: '1rem', paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                        {sub.list.map((item, slIdx) => (
+                          <li key={slIdx} style={{ fontSize: '1.125rem', lineHeight: '1.6', color: 'var(--text)' }}>
+                            {item.label && <strong style={{ color: 'var(--accent)' }}>{item.label}: </strong>}
+                            {item.text}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    {sub.table && (
+                      <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '1rem', border: '1px solid var(--border)', borderRadius: '8px', overflow: 'hidden' }}>
+                          <thead>
+                            <tr style={{ backgroundColor: 'var(--surface)', borderBottom: '1px solid var(--border)' }}>
+                              {sub.table.headers.map((h, i) => (
+                                <th key={i} style={{ padding: '1rem', fontWeight: '600', color: 'var(--text-secondary)' }}>{h}</th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {sub.table.rows.map((row, rIdx) => (
+                              <tr key={rIdx} style={{ borderBottom: '1px solid var(--border)' }}>
+                                {row.map((cell, cIdx) => (
+                                  <td key={cIdx} style={{ padding: '1rem', color: 'var(--text)' }}>{cell}</td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </motion.div>
+            ))}
+
             <div className="simple-text-stack">
               <motion.div
                 className="simple-text-section"

@@ -20,7 +20,7 @@ export default function SiteShell() {
             </span>
             <span className="brand-copy">
               <strong>Lakshya Gupta</strong>
-              <span>Creative technologist / portfolio studio</span>
+              <span>Sophomore | Tech & Business @NST’29 | love building cool stuff</span>
             </span>
           </Link>
 
