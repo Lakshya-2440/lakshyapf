@@ -1,152 +1,101 @@
 import { motion } from 'framer-motion'
-import SectionHeading from '../components/SectionHeading'
-import {
-  FaAward,
-  FaComments,
-  FaEnvelope,
-  FaGithub,
-  FaInstagram,
-  FaLink,
-  FaLinkedinIn,
-  FaYoutube,
-} from 'react-icons/fa'
 import { socialLinks } from '../data/siteData'
 
 export default function ConnectPage() {
-  const socialVisuals = {
-    GitHub: { Icon: FaGithub, brand: '#161b22' },
-    LinkedIn: { Icon: FaLinkedinIn, brand: '#0a66c2' },
-    Instagram: { Icon: FaInstagram, brand: '#e1306c' },
-    Holopin: { Icon: FaAward, brand: '#f59e0b' },
-    YouTube: { Icon: FaYoutube, brand: '#ff0033' },
-    Email: { Icon: FaEnvelope, brand: '#10b981' },
-  }
-
-  const nodeLayout = {
-    GitHub: { x: 14, y: 30 },
-    LinkedIn: { x: 31, y: 18 },
-    Instagram: { x: 69, y: 18 },
-    Holopin: { x: 86, y: 33 },
-    YouTube: { x: 70, y: 76 },
-    Email: { x: 30, y: 76 },
-  }
-
-  const channels = socialLinks.map((item) => {
-    const visual = socialVisuals[item.label] ?? { Icon: FaLink, brand: '#6b7280' }
-    const layout = nodeLayout[item.label] ?? { x: 50, y: 50 }
-
-    return {
-      ...item,
-      ...visual,
-      ...layout,
-    }
-  })
+  const primaryLinks = socialLinks.filter(l => ['LinkedIn', 'GitHub', 'Email'].includes(l.label))
+  const secondaryLinks = socialLinks.filter(l => !['LinkedIn', 'GitHub', 'Email'].includes(l.label))
 
   return (
-    <div className="page connect-page">
-      <section className="page-hero page-hero-alt">
-        <motion.div
-          className="container narrow-center"
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
+    <div className="page brutal-connect-page">
+      <div className="brutal-layout">
+        
+        {/* Floating Card */}
+        <motion.div 
+          className="lakshya-card"
+          initial={{ opacity: 0, y: 50, rotate: -3 }}
+          animate={{ opacity: 1, y: 0, rotate: -1 }}
+          transition={{ duration: 1, delay: 0.2, type: 'spring' }}
+          whileHover={{ rotate: 1, scale: 1.02 }}
+          drag
+          dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}
         >
-          <h1>
-            Start a conversation
-            <span className="accent-serif"> anywhere you prefer.</span>
-          </h1>
+          <div className="card-stars">
+            <svg className="black-star" viewBox="0 0 100 100">
+              <path d="M50 0 L55 45 L100 50 L55 55 L50 100 L45 55 L0 50 L45 45 Z" fill="#000" />
+            </svg>
+            <div className="red-ellipse"></div>
+            <svg className="red-star" viewBox="0 0 100 100">
+              <polygon points="50,5 61,39 98,39 68,60 79,95 50,75 21,95 32,60 2,39 39,39" fill="#ff0033" />
+            </svg>
+            <div className="red-glow"></div>
+          </div>
+          <h2 className="card-name">LAKSHYA</h2>
+          <div className="card-footer">
+            <div className="card-line"></div>
+            <span className="card-tagline">BUILDING COOL STUFF</span>
+            <div className="card-line"></div>
+          </div>
         </motion.div>
-      </section>
 
-      <section className="section-block">
-        <div className="container">
-          <SectionHeading
-            eyebrow="All social links"
-            title="One place for all contact paths."
-            body="Follow the orbit or choose from the cards below. Every link opens the right profile."
-            align="stacked"
-          />
+        <motion.h1 
+          className="brutal-headline"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          Get in touch
+        </motion.h1>
 
-          <div className="connect-layout">
-            <motion.div
-              className="connect-orbit-panel"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, ease: [0.2, 0.8, 0.2, 1] }}
+        <div className="brutal-content">
+          <div className="brutal-col label-col">
+            <motion.span 
+              className="brutal-label"
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
             >
-              <div className="connect-orbit">
-                <svg className="connect-network-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-                  {channels.map((item) => (
-                    <motion.line
-                      key={`link-${item.label}`}
-                      x1="50"
-                      y1="50"
-                      x2={item.x}
-                      y2={item.y}
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: 1 }}
-                      transition={{ duration: 1, ease: 'easeInOut' }}
-                    />
-                  ))}
-                </svg>
+              REPPED BY
+            </motion.span>
+            <motion.span 
+              className="brutal-line"
+              initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.5 }}
+            ></motion.span>
+          </div>
 
-                <div className="connect-orbit-core">
-                  <FaComments className="connect-icon" aria-hidden="true" />
-                  <span className="eyebrow">Live</span>
-                  <strong>Connect</strong>
-                </div>
+          <div className="brutal-col links-col">
+            {primaryLinks.map((link, i) => (
+              <motion.a 
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="brutal-primary-link"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 + (i * 0.1), ease: [0.16, 1, 0.3, 1] }}
+              >
+                {link.label.toUpperCase()}
+                <span className="link-underline"></span>
+              </motion.a>
+            ))}
+          </div>
 
-                {channels.map((item, index) => (
-                  <motion.a
-                    key={item.label}
-                    className="connect-orbit-node"
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{
-                      '--node-order': index,
-                      '--node-x': `${item.x}%`,
-                      '--node-y': `${item.y}%`,
-                      '--brand': item.brand,
-                    }}
-                    aria-label={`Open ${item.label}`}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.2 + index * 0.1, type: 'spring', stiffness: 120 }}
-                    whileHover={{ scale: 1.25, zIndex: 10 }}
-                  >
-                    <item.Icon className="connect-icon" aria-hidden="true" />
-                  </motion.a>
-                ))}
-              </div>
-            </motion.div>
-
-            <div className="connect-grid">
-              {channels.map((item, index) => (
-                <motion.a
-                  key={item.label}
-                  className="connect-card"
-                  href={item.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                >
-                  <span className="connect-logo" style={{ '--brand': item.brand }} aria-hidden="true">
-                    <item.Icon className="connect-icon" aria-hidden="true" />
-                  </span>
-                  <span className="eyebrow">{item.label}</span>
-                  <strong>{item.label}</strong>
-                  <p>Open profile</p>
-                </motion.a>
-              ))}
-            </div>
+          <div className="brutal-col secondary-col">
+            {secondaryLinks.map((link, i) => (
+              <motion.a 
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="brutal-secondary-link"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 + (i * 0.1), ease: [0.16, 1, 0.3, 1] }}
+              >
+                {link.label}
+              </motion.a>
+            ))}
           </div>
         </div>
-      </section>
+      </div>
     </div>
   )
 }

@@ -11,7 +11,6 @@ import {
   operatingModes,
 } from '../data/siteData'
 
-// --- HIGH END MAGNETIC BUTTON WRAPPER ---
 function MagneticButton({ children }) {
   const ref = useRef(null)
   const x = useMotionValue(0)

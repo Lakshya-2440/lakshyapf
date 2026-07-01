@@ -3,14 +3,6 @@ import { Link } from 'react-router-dom'
 import SectionHeading from '../components/SectionHeading'
 import { blogPosts } from '../data/blogData'
 
-const renderMarkdown = (text) => {
-  if (!text) return null;
-  const html = text
-    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*([^*]+)\*/g, '<em>$1</em>');
-  return <span dangerouslySetInnerHTML={{ __html: html }} />;
-};
-
 export default function BlogPage() {
   return (
     <div className="page blog-page">
@@ -37,53 +29,38 @@ export default function BlogPage() {
 
       <section className="section-block">
         <div className="container">
-          {blogPosts.map((post, index) => (
-            <div key={post.title}>
-              <motion.article
-                className="blog-article"
+          <div className="blog-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '2.5rem', marginBottom: '6rem' }}>
+            {blogPosts.map((post, index) => (
+              <motion.div
+                key={post.slug}
                 initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
+                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.2, 0.8, 0.2, 1] }}
+                style={{ height: '100%' }}
               >
-                <header className="blog-article-header">
-                  <div className="blog-meta-row">
-                    <span className="blog-date">{post.date}</span>
-                    <span className="blog-read-time">{post.readTime}</span>
+                <Link to={`/blog/${post.slug}`} className="blog-card" style={{ display: 'flex', flexDirection: 'column', height: '100%', padding: '2.5rem', background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3))', border: '1px solid rgba(18, 19, 25, 0.12)', borderRadius: '2rem', textDecoration: 'none', color: 'var(--ink)', transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)', boxShadow: '0 8px 30px rgba(0,0,0,0.04)' }}>
+                  <div className="blog-meta-row" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem', fontSize: '0.85rem' }}>
+                    <span style={{ color: 'var(--ink-light)', fontWeight: 500 }}>{post.date}</span>
+                    <span style={{ color: 'var(--accent-orange)', fontWeight: 600 }}>{post.readTime}</span>
                   </div>
-                  <h2 className="blog-article-title">{post.title}</h2>
-                  <div className="chip-row">
-                    {post.tags.map((tag) => (
-                      <span key={tag} className="chip">{tag}</span>
+                  
+                  <h2 style={{ fontSize: '1.4rem', lineHeight: 1.3, marginBottom: '1rem', fontWeight: 600 }}>{post.title}</h2>
+                  
+                  <p style={{ color: 'var(--ink-light)', lineHeight: 1.6, fontSize: '1rem', marginBottom: '2rem', flexGrow: 1 }}>
+                    {post.summary}
+                  </p>
+                  
+                  <div className="chip-row" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: 'auto' }}>
+                    {post.tags.slice(0, 3).map((tag) => (
+                      <span key={tag} className="chip" style={{ margin: 0 }}>{tag}</span>
                     ))}
+                    {post.tags.length > 3 && <span className="chip" style={{ margin: 0 }}>+{post.tags.length - 3}</span>}
                   </div>
-                </header>
-
-                <div className="blog-article-body">
-                  {post.sections.map((section) => (
-                    <div key={section.heading} className="blog-section">
-                      <h3>{section.heading}</h3>
-                      {section.body.split('\n\n').map((para, i) => (
-                        <p key={i}>{renderMarkdown(para)}</p>
-                      ))}
-                    </div>
-                  ))}
-
-                  {post.references && post.references.length > 0 && (
-                    <div className="blog-section blog-references">
-                      <h3>References</h3>
-                      <ol>
-                        {post.references.map((ref, i) => (
-                          <li key={i}>{renderMarkdown(ref)}</li>
-                        ))}
-                      </ol>
-                    </div>
-                  )}
-                </div>
-              </motion.article>
-              {index < blogPosts.length - 1 && <hr className="blog-divider" style={{ border: 'none', borderTop: '1px solid var(--border)', margin: '4rem 0' }} />}
-            </div>
-          ))}
+                </Link>
+              </motion.div>
+            ))}
+          </div>
 
           <motion.div
             className="blog-footer-cta"

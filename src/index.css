@@ -731,3 +731,234 @@ p {
 .project-card.feature:hover .project-artwork img {
   transform: scale(1.04);
 }
+
+/* --- BRUTAL CONNECT PAGE --- */
+.brutal-connect-page {
+  background: #f4f4f4;
+  min-height: 100vh;
+  padding-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.brutal-layout {
+  width: 100%;
+  max-width: 1600px;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - 80px);
+  position: relative;
+}
+
+.brutal-headline {
+  font-size: clamp(5rem, 15vw, 16rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #111;
+  line-height: 0.85;
+  margin-bottom: 8rem;
+  z-index: 2;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.brutal-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: end;
+  width: 100%;
+  z-index: 2;
+}
+
+.label-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.brutal-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #111;
+}
+
+.brutal-line {
+  width: 20px;
+  height: 1px;
+  background: #111;
+}
+
+.links-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.brutal-primary-link {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 500;
+  color: #111;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  line-height: 1.1;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.brutal-primary-link .link-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #111;
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.brutal-primary-link:hover .link-underline {
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+.secondary-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+}
+
+.brutal-secondary-link {
+  font-size: 0.9rem;
+  color: #111;
+  text-decoration: none;
+  border-bottom: 1px solid #111;
+  padding-bottom: 2px;
+  transition: opacity 0.3s ease;
+}
+
+.brutal-secondary-link:hover {
+  opacity: 0.5;
+}
+
+/* Card */
+.lakshya-card {
+  position: absolute;
+  top: 15%;
+  right: 15%;
+  background: #fff;
+  padding: 3rem 4rem;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.05), 0 5px 15px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  cursor: grab;
+}
+
+.lakshya-card:active {
+  cursor: grabbing;
+}
+
+.card-stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; left: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.black-star {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  left: 20px;
+  top: 30px;
+}
+.red-ellipse {
+  position: absolute;
+  width: 70px;
+  height: 20px;
+  border: 1px solid #ff0033;
+  border-radius: 50%;
+  left: 15px;
+  top: 50px;
+  transform: rotate(-10deg);
+}
+
+.red-star {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  left: 100px;
+  top: 75px;
+  z-index: -1;
+}
+.red-glow {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(255,0,51,0.15) 0%, transparent 70%);
+  right: 20px;
+  bottom: 20px;
+}
+
+.card-name {
+  font-size: 5rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #000;
+  margin: 0;
+  z-index: 2;
+  position: relative;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  z-index: 2;
+}
+
+.card-tagline {
+  font-family: monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  font-weight: 700;
+  color: #000;
+}
+
+.card-line {
+  width: 40px;
+  height: 1px;
+  background: #000;
+}
+
+@media (max-width: 1024px) {
+  .brutal-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .secondary-col {
+    align-items: flex-start;
+  }
+  .lakshya-card {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-bottom: 2rem;
+    transform: none !important;
+  }
+}

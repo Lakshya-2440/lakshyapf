@@ -64,7 +64,7 @@ export const timeline = [
   },
   {
     year: '2026+',
-    title: 'HPAIR Delegate & AI Systems',
+    title: 'HPAIR 2026 Delegate & AI Systems',
     description: 'Selected Delegate at HPAIR 2026 (Hanoi). Shipped production RAG systems to 12,000+ users across 4 countries with zero ungrounded hallucinations.',
   },
 ]

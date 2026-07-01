@@ -1,6 +1,8 @@
 export const blogPosts = [
   {
+    "slug": "feedback-loop-click-data",
     "title": "The Feedback Loop That Lies: Why Click Data Is Corrupting Your Search Rankings",
+    "summary": "Training search models on unmodified click data encodes position as a latent relevance signal, creating a self-reinforcing feedback loop. This article examines position bias, inverse propensity weighting, and the organizational barriers to fixing it.",
     "date": "March 2026",
     "readTime": "8 min read",
     "tags": [
@@ -44,7 +46,9 @@ export const blogPosts = [
     ]
   },
   {
+    "slug": "528-prompts-later-llm-safety",
     "title": "528 Prompts Later: What Systematic Red-Teaming Actually Reveals About LLM Safety",
+    "summary": "Alignment in base models doesn't equal safe applications. A deep dive into systematic adversarial red-teaming, prompt mutation strategies, and what a 20.5% baseline violation rate reveals about LLM deployment.",
     "date": "March 2026",
     "readTime": "9 min read",
     "tags": [
@@ -88,7 +92,9 @@ export const blogPosts = [
     ]
   },
   {
+    "slug": "latent-space-navigation",
     "title": "Latent Space Navigation: Why Spatial Intuition Matters for Generative AI Interfaces",
+    "summary": "Generative AI tools rely on one-dimensional text inputs for high-dimensional latent spaces. This piece argues that the next breakthrough in AI interfaces will come from exposing latent space topology to end users.",
     "date": "February 2026",
     "readTime": "8 min read",
     "tags": [

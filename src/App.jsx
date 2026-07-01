@@ -4,6 +4,7 @@ import SiteShell from './components/SiteShell'
 import { useGitHubSignals } from './hooks/useGitHubSignals'
 import AboutPage from './pages/AboutPage'
 import BlogPage from './pages/BlogPage'
+import BlogDetailPage from './pages/BlogDetailPage'
 import ConnectPage from './pages/ConnectPage'
 import DomainDetailPage from './pages/DomainDetailPage'
 import DomainsPage from './pages/DomainsPage'
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="domains" element={<DomainsPage />} />
           <Route path="domains/:domainSlug" element={<DomainDetailPage />} />
           <Route path="blog" element={<BlogPage />} />
+          <Route path="blog/:blogSlug" element={<BlogDetailPage />} />
           <Route path="about" element={<AboutPage signals={signals} />} />
           <Route path="connect" element={<ConnectPage />} />
           <Route path="*" element={<NotFoundPage />} />
