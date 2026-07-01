@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import DomainCard from '../components/DomainCard'
 import SectionHeading from '../components/SectionHeading'
@@ -8,7 +9,12 @@ export default function DomainsPage() {
     <div className="page domains-page">
       <section className="page-hero page-hero-alt">
         <div className="container page-hero-grid">
-          <div className="hero-copy" data-reveal>
+          <motion.div
+            className="hero-copy"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
+          >
             <p className="eyebrow">Domain map / practice areas / work categories</p>
             <h1>
               Four lanes,
@@ -19,16 +25,26 @@ export default function DomainsPage() {
             </p>
 
             <div className="hero-actions">
-              <a className="button primary" href="#domain-grid">
-                Browse domain pages
-              </a>
-              <Link className="button secondary" to="/projects">
-                Return to projects
-              </Link>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block' }}>
+                <a className="button primary" href="#domain-grid">
+                  Browse domain pages
+                </a>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block' }}>
+                <Link className="button secondary" to="/projects">
+                  Return to projects
+                </Link>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="quote-card" data-reveal>
+          <motion.div
+            className="quote-card"
+            initial={{ opacity: 0, x: 32 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1], delay: 0.15 }}
+            whileHover={{ y: -4, transition: { duration: 0.2 } }}
+          >
             <p className="eyebrow">Why this page exists</p>
             <h2>
               Breadth is only useful
@@ -37,7 +53,7 @@ export default function DomainsPage() {
             <p>
               Each lane below frames a different capability without making the whole site feel overloaded.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 

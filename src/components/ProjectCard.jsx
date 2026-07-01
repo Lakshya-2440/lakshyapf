@@ -29,7 +29,6 @@ const cardVariants = {
 export default function ProjectCard({ project, variant = 'feature' }) {
   const domainTitle = getDomainTitle(project.domainSlug)
   const isCompact = variant === 'compact'
-  const visibleOutcomes = project.outcomes.slice(0, isCompact ? 1 : 2)
   const visibleStack = project.stack.slice(0, isCompact ? 3 : 4)
   const metrics = project.metrics || []
 
@@ -86,12 +85,6 @@ export default function ProjectCard({ project, variant = 'feature' }) {
 
         <p className="project-description">{isCompact ? project.summary : project.description}</p>
 
-        <ul className="project-kpis">
-          {visibleOutcomes.map((item) => (
-            <li key={`${project.slug}-${item}`}>{item}</li>
-          ))}
-        </ul>
-
         <div className="chip-row">
           {visibleStack.map((item) => (
             <span key={`${project.slug}-${item}`} className="chip">
@@ -114,11 +107,11 @@ export default function ProjectCard({ project, variant = 'feature' }) {
           <Link className="button primary" to={`/projects/${project.slug}`}>
             {isCompact ? 'Open case study' : 'Read case study'}
           </Link>
-          {isCompact ? null : (
-            <a className="button secondary" href={project.repo} target="_blank" rel="noreferrer">
+          {project.repo ? (
+            <a className="button primary" href={project.repo} target="_blank" rel="noreferrer">
               Open repo
             </a>
-          )}
+          ) : null}
         </div>
       </div>
     </motion.article>

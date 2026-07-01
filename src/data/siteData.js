@@ -48,24 +48,24 @@ export const operatingModes = [
 
 export const timeline = [
   {
-    year: '2022',
-    title: 'Started building in public',
-    description: 'Began publishing experiments and learning through shipped repos rather than private drafts.',
+    year: '2016–2022',
+    title: 'Started coding at age 9',
+    description: '10+ years of OOP experience (Python, TypeScript, C) with strong CS fundamentals, data structures, and algorithms.',
   },
   {
     year: '2023',
-    title: 'Expanded into spatial and hardware-adjacent work',
-    description: 'Moved beyond landing pages into 3D interfaces, robotics-flavored experiments, and simulation logic.',
+    title: 'Founder — Sparker Kit',
+    description: 'Won 10-Day Entrepreneurship Hackathon at age 16, generating ₹40K revenue and ₹20K profit in a single sprint. Mentored peers on product thinking.',
   },
   {
-    year: '2024',
-    title: 'Built a broader creative technology body of work',
-    description: 'Balanced product-oriented builds with launch pages, CSS art, and AI-assisted tooling.',
+    year: '2024–2025',
+    title: 'Open Source & Big Code',
+    description: 'Ranked Top 15,000 at Google Big Code 2026, Top 10,000 at Hacktoberfest 2025, and contributed 8,000+ lines of production code across AI/ML tooling.',
   },
   {
-    year: '2025+',
-    title: 'Sharpening portfolio signal',
-    description: 'Focusing the public work into clearer domains that read strongly to recruiters, founders, and creative teams.',
+    year: '2026+',
+    title: 'HPAIR Delegate & AI Systems',
+    description: 'Selected Delegate at HPAIR 2026 (Hanoi). Shipped production RAG systems to 12,000+ users across 4 countries with zero ungrounded hallucinations.',
   },
 ]
 
@@ -338,6 +338,7 @@ export const projects = [
       'Goes beyond simple prompt testing. MART-style multi-round mutation loops evolve prompts based on prior failures. Judge scoring, model comparison, violation reduction tracking, and CI integration templates make this a production-grade safety evaluation framework.',
     role: 'AI safety engineering and full-stack development',
     repo: 'https://github.com/Lakshya-2440/llm-evaluation-framework',
+    liveUrl: 'https://llm-evaluation-framework.vercel.app',
     domainSlug: 'ai-projects',
     images: ['/llm-eval-1.png', '/llm-eval-2.jpg', '/llm-eval-3.png'],
     stack: ['Python', 'FastAPI', 'TypeScript', 'React', 'DeepEval', 'LangSmith'],

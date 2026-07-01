@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import ProjectCard from '../components/ProjectCard'
 import SectionHeading from '../components/SectionHeading'
@@ -17,7 +18,12 @@ export default function DomainDetailPage() {
     <div className="page domain-detail-page">
       <section className="page-hero page-hero-alt">
         <div className="container page-hero-grid">
-          <div className="hero-copy" data-reveal>
+          <motion.div
+            className="hero-copy"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
+          >
             <p className="eyebrow">Domain page / {domain.title}</p>
             <h1>
               {domain.title}
@@ -26,16 +32,26 @@ export default function DomainDetailPage() {
             <p className="hero-body">{domain.description}</p>
 
             <div className="hero-actions">
-              <Link className="button primary" to="/projects">
-                Open all projects
-              </Link>
-              <Link className="button secondary" to="/domains">
-                Back to domains
-              </Link>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block' }}>
+                <Link className="button primary" to="/projects">
+                  Open all projects
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block' }}>
+                <Link className="button secondary" to="/domains">
+                  Back to domains
+                </Link>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className={`domain-profile tone-${domain.accent}`} data-reveal>
+          <motion.div
+            className={`domain-profile tone-${domain.accent}`}
+            initial={{ opacity: 0, x: 32 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1], delay: 0.15 }}
+            whileHover={{ y: -4, transition: { duration: 0.2 } }}
+          >
             <div>
               <p className="eyebrow">What this lane is good for</p>
               <div className="domain-list emphasis">
@@ -53,7 +69,7 @@ export default function DomainDetailPage() {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 

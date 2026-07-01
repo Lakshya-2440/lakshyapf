@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import SectionHeading from '../components/SectionHeading'
 import {
   FaAward,
@@ -44,12 +45,17 @@ export default function ConnectPage() {
   return (
     <div className="page connect-page">
       <section className="page-hero page-hero-alt">
-        <div className="container narrow-center" data-reveal>
+        <motion.div
+          className="container narrow-center"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
+        >
           <h1>
             Start a conversation
             <span className="accent-serif"> anywhere you prefer.</span>
           </h1>
-        </div>
+        </motion.div>
       </section>
 
       <section className="section-block">
@@ -62,11 +68,25 @@ export default function ConnectPage() {
           />
 
           <div className="connect-layout">
-            <div className="connect-orbit-panel" data-reveal>
+            <motion.div
+              className="connect-orbit-panel"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, ease: [0.2, 0.8, 0.2, 1] }}
+            >
               <div className="connect-orbit">
                 <svg className="connect-network-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
                   {channels.map((item) => (
-                    <line key={`link-${item.label}`} x1="50" y1="50" x2={item.x} y2={item.y} />
+                    <motion.line
+                      key={`link-${item.label}`}
+                      x1="50"
+                      y1="50"
+                      x2={item.x}
+                      y2={item.y}
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 1, ease: 'easeInOut' }}
+                    />
                   ))}
                 </svg>
 
@@ -77,7 +97,7 @@ export default function ConnectPage() {
                 </div>
 
                 {channels.map((item, index) => (
-                  <a
+                  <motion.a
                     key={item.label}
                     className="connect-orbit-node"
                     href={item.href}
@@ -90,21 +110,30 @@ export default function ConnectPage() {
                       '--brand': item.brand,
                     }}
                     aria-label={`Open ${item.label}`}
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.2 + index * 0.1, type: 'spring', stiffness: 120 }}
+                    whileHover={{ scale: 1.25, zIndex: 10 }}
                   >
                     <item.Icon className="connect-icon" aria-hidden="true" />
-                  </a>
+                  </motion.a>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             <div className="connect-grid">
-              {channels.map((item) => (
-                <a
+              {channels.map((item, index) => (
+                <motion.a
                   key={item.label}
                   className="connect-card"
                   href={item.href}
                   target="_blank"
                   rel="noreferrer"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ y: -6, transition: { duration: 0.2 } }}
                 >
                   <span className="connect-logo" style={{ '--brand': item.brand }} aria-hidden="true">
                     <item.Icon className="connect-icon" aria-hidden="true" />
@@ -112,7 +141,7 @@ export default function ConnectPage() {
                   <span className="eyebrow">{item.label}</span>
                   <strong>{item.label}</strong>
                   <p>Open profile</p>
-                </a>
+                </motion.a>
               ))}
             </div>
           </div>

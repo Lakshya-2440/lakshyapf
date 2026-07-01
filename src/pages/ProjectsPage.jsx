@@ -1,5 +1,6 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
 import { Link, useSearchParams } from 'react-router-dom'
+import { useRef } from 'react'
 import ProjectCard from '../components/ProjectCard'
 import SectionHeading from '../components/SectionHeading'
 import { domains, featuredProjects, projects } from '../data/siteData'
@@ -57,11 +58,31 @@ export default function ProjectsPage() {
     setSearchParams(nextParams)
   }
 
+  const containerRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  })
+
+  const bgY1 = useTransform(scrollYProgress, [0, 1], [0, -200])
+  const bgY2 = useTransform(scrollYProgress, [0, 1], [0, 180])
+  const heroTextY = useTransform(scrollYProgress, [0, 1], [0, -60])
+  const overviewCardY = useTransform(scrollYProgress, [0, 1], [0, -120])
+
   return (
-    <div className="page projects-page">
+    <div ref={containerRef} className="page projects-page" style={{ position: 'relative', overflow: 'hidden' }}>
+      <motion.div className="parallax-bg-shape shape-1" style={{ y: bgY1 }} />
+      <motion.div className="parallax-bg-shape shape-3" style={{ y: bgY2 }} />
+
       <section className="page-hero page-hero-alt">
         <div className="container page-hero-grid projects-hero-grid">
-          <div className="hero-copy" data-reveal>
+          <motion.div
+            className="hero-copy"
+            style={{ y: heroTextY }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
+          >
             <p className="eyebrow">Projects hub / category filters / case-study archive</p>
             <h1>
               A project page with more
@@ -73,17 +94,22 @@ export default function ProjectsPage() {
             </p>
 
             <div className="hero-actions">
-              <a className="button primary" href="#featured">
-                Jump to featured work
-              </a>
-              <a className="button secondary" href="#project-categories">
-                Browse by category
-              </a>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block' }}>
+                <a className="button primary" href="#featured">
+                  Jump to featured work
+                </a>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block' }}>
+                <a className="button secondary" href="#project-categories">
+                  Browse by category
+                </a>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
           <motion.div
             className="overview-card"
+            style={{ y: overviewCardY }}
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1], delay: 0.15 }}

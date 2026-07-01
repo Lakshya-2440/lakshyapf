@@ -17,19 +17,6 @@ const fadeUp = {
   }),
 }
 
-const storyCardVariants = {
-  hidden: { opacity: 0, y: 20, scale: 0.97 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      delay: 0.1 + i * 0.1,
-      duration: 0.5,
-      ease: [0.2, 0.8, 0.2, 1],
-    },
-  }),
-}
 
 export default function ProjectDetailPage() {
   const { projectSlug } = useParams()
@@ -89,24 +76,32 @@ export default function ProjectDetailPage() {
 
             <div className="hero-actions">
               {project.liveUrl ? (
-                <a
-                  className="button live-demo"
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Live demo
-                </a>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block' }}>
+                  <a
+                    className="button live-demo"
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Live demo
+                  </a>
+                </motion.div>
               ) : null}
-              <a className="button primary" href={project.repo} target="_blank" rel="noreferrer">
-                Open repository
-              </a>
-              <Link className="button secondary" to={`/projects?domain=${project.domainSlug}#project-categories`}>
-                Explore this category
-              </Link>
-              <Link className="button ghost" to="/projects">
-                Back to projects
-              </Link>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block' }}>
+                <a className="button primary" href={project.repo} target="_blank" rel="noreferrer">
+                  Open repository
+                </a>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block' }}>
+                <Link className="button secondary" to={`/projects?domain=${project.domainSlug}#project-categories`}>
+                  Explore this category
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block' }}>
+                <Link className="button ghost" to="/projects">
+                  Back to projects
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
 

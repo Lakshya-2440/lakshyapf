@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import SectionHeading from '../components/SectionHeading'
 import { blogPosts } from '../data/blogData'
@@ -15,7 +16,12 @@ export default function BlogPage() {
     <div className="page blog-page">
       <section className="page-hero page-hero-alt">
         <div className="container">
-          <div className="hero-copy" data-reveal>
+          <motion.div
+            className="hero-copy"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
+          >
             <p className="eyebrow">Blog / research notes / applied thinking</p>
             <h1>
               Writing that
@@ -25,7 +31,7 @@ export default function BlogPage() {
               Long-form notes on the intersection of AI systems, spatial interfaces,
               and product-oriented engineering. Less trend commentary, more applied thinking.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -33,7 +39,13 @@ export default function BlogPage() {
         <div className="container">
           {blogPosts.map((post, index) => (
             <div key={post.title}>
-              <article className="blog-article" data-reveal>
+              <motion.article
+                className="blog-article"
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
+              >
                 <header className="blog-article-header">
                   <div className="blog-meta-row">
                     <span className="blog-date">{post.date}</span>
@@ -68,12 +80,18 @@ export default function BlogPage() {
                     </div>
                   )}
                 </div>
-              </article>
+              </motion.article>
               {index < blogPosts.length - 1 && <hr className="blog-divider" style={{ border: 'none', borderTop: '1px solid var(--border)', margin: '4rem 0' }} />}
             </div>
           ))}
 
-          <div className="blog-footer-cta" data-reveal>
+          <motion.div
+            className="blog-footer-cta"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
+          >
             <SectionHeading
               eyebrow="Applied work"
               title="See how this thinking shows up in builds."
@@ -81,14 +99,18 @@ export default function BlogPage() {
               align="stacked"
             />
             <div className="hero-actions">
-              <Link className="button primary" to="/projects">
-                View projects
-              </Link>
-              <Link className="button secondary" to="/projects#project-categories">
-                Browse categories
-              </Link>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block' }}>
+                <Link className="button primary" to="/projects">
+                  View projects
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block' }}>
+                <Link className="button secondary" to="/projects#project-categories">
+                  Browse categories
+                </Link>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>
