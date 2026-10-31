@@ -6,7 +6,9 @@ const renderMarkdown = (text) => {
   if (!text) return null;
   const html = text
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    .replace(/`([^`]+)`/g, '<code style="background: rgba(18, 19, 25, 0.06); padding: 0.15rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.9em;">$1</code>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color: var(--accent-orange); text-decoration: underline;">$1</a>');
   return <span dangerouslySetInnerHTML={{ __html: html }} />;
 };
 
@@ -43,6 +45,21 @@ export default function BlogDetailPage() {
                 <span key={tag} className="chip">{tag}</span>
               ))}
             </div>
+            {post.coverImage && (
+              <div className="blog-cover-container" style={{ marginTop: '2.5rem' }}>
+                <img
+                  src={post.coverImage}
+                  alt={post.title}
+                  style={{
+                    width: '100%',
+                    borderRadius: '1.5rem',
+                    border: '1px solid rgba(18, 19, 25, 0.1)',
+                    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.08)',
+                    display: 'block'
+                  }}
+                />
+              </div>
+            )}
           </motion.div>
         </div>
       </section>
@@ -60,6 +77,32 @@ export default function BlogDetailPage() {
               {post.sections.map((section) => (
                 <div key={section.heading} className="blog-section">
                   <h3>{section.heading}</h3>
+                  {section.image && (
+                    <figure className="blog-section-figure" style={{ margin: '1.75rem 0 2rem' }}>
+                      <img
+                        src={section.image}
+                        alt={section.caption || section.heading}
+                        style={{
+                          width: '100%',
+                          borderRadius: '1rem',
+                          border: '1px solid rgba(18, 19, 25, 0.1)',
+                          boxShadow: '0 12px 30px rgba(0, 0, 0, 0.05)',
+                          display: 'block'
+                        }}
+                      />
+                      {section.caption && (
+                        <figcaption style={{
+                          marginTop: '0.75rem',
+                          fontSize: '0.88rem',
+                          color: 'var(--ink-light)',
+                          textAlign: 'center',
+                          fontStyle: 'italic'
+                        }}>
+                          {section.caption}
+                        </figcaption>
+                      )}
+                    </figure>
+                  )}
                   {section.body.split('\n\n').map((para, i) => (
                     <p key={i}>{renderMarkdown(para)}</p>
                   ))}

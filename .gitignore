@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 profile
+.freebuff
+.playwright-mcp
+test.js

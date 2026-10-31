@@ -1,6 +1,6 @@
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import DomainCard from '../components/DomainCard'
 import ProjectCard from '../components/ProjectCard'
 import SectionHeading from '../components/SectionHeading'
@@ -11,88 +11,7 @@ import {
   operatingModes,
 } from '../data/siteData'
 
-function MagneticButton({ children }) {
-  const ref = useRef(null)
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
-
-  const springConfig = { stiffness: 150, damping: 15, mass: 0.1 }
-  const springX = useSpring(x, springConfig)
-  const springY = useSpring(y, springConfig)
-
-  const handleMouseMove = (e) => {
-    const { left, top, width, height } = ref.current.getBoundingClientRect()
-    const centerFixedX = left + width / 2
-    const centerFixedY = top + height / 2
-    x.set((e.clientX - centerFixedX) * 0.25)
-    y.set((e.clientY - centerFixedY) * 0.25)
-  }
-
-  const handleMouseLeave = () => {
-    x.set(0)
-    y.set(0)
-  }
-
-  return (
-    <motion.div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ x: springX, y: springY, display: 'inline-block' }}
-    >
-      {children}
-    </motion.div>
-  )
-}
-
-// --- PREMIUM 3D TILT CARD WITH DYNAMIC MOUSE GLARE ---
-function TiltCard({ children, className }) {
-  const [rotateX, setRotateX] = useState(0)
-  const [rotateY, setRotateY] = useState(0)
-  const [glarePos, setGlarePos] = useState({ x: 50, y: 50 })
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-    const centerX = rect.width / 2
-    const centerY = rect.height / 2
-    
-    const rX = ((y - centerY) / centerY) * -12
-    const rY = ((x - centerX) / centerX) * 12
-    setRotateX(rX)
-    setRotateY(rY)
-
-    // Calculate percentage for glare
-    const percentX = (x / rect.width) * 100
-    const percentY = (y / rect.height) * 100
-    setGlarePos({ x: percentX, y: percentY })
-  }
-
-  const handleMouseLeave = () => {
-    setRotateX(0)
-    setRotateY(0)
-  }
-
-  return (
-    <motion.article
-      className={className}
-      style={{ perspective: 1200, transformStyle: 'preserve-3d', position: 'relative' }}
-      animate={{ rotateX, rotateY }}
-      transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div 
-        className="premium-glare-overlay" 
-        style={{
-          background: `radial-gradient(circle at ${glarePos.x}% ${glarePos.y}%, rgba(255, 255, 255, 0.35), transparent 60%)`
-        }}
-      />
-      {children}
-    </motion.article>
-  )
-}
+import MagneticButton from '../components/MagneticButton'
 
 export default function HomePage({ signals }) {
   const leadDomains = domains.slice(0, 2)

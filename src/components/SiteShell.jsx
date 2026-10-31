@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation, useOutlet } from 'react-router-dom'
 import { navigation, socialLinks } from '../data/siteData'
 import { useSiteEffects } from '../hooks/useSiteEffects'
 import { cloneElement } from 'react'
+import CustomCursor from './CustomCursor'
 
 export default function SiteShell() {
   const location = useLocation()
@@ -13,6 +14,8 @@ export default function SiteShell() {
 
   return (
     <>
+      <CustomCursor />
+      <div className="noise-overlay" />
       <div className="progress-bar" aria-hidden="true" />
 
       <motion.header
@@ -60,10 +63,10 @@ export default function SiteShell() {
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
+            initial={{ opacity: 0, y: 16, filter: 'blur(4px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            exit={{ opacity: 0, y: -16, filter: 'blur(4px)' }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
             {outlet ? cloneElement(outlet, { key: location.pathname }) : null}
           </motion.div>

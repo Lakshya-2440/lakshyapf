@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { useRef, useState } from 'react'
 import { domains } from '../data/siteData'
 import ProjectArtwork from './ProjectArtwork'
 
@@ -31,20 +32,69 @@ export default function ProjectCard({ project, variant = 'feature' }) {
   const isCompact = variant === 'compact'
   const visibleStack = project.stack.slice(0, isCompact ? 3 : 4)
   const metrics = project.metrics || []
+  const cardRef = useRef(null)
+
+  const [glarePos, setGlarePos] = useState({ x: 50, y: 50 })
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+
+  const springConfig = { damping: 25, stiffness: 350, mass: 0.5 }
+  const xSpring = useSpring(x, springConfig)
+  const ySpring = useSpring(y, springConfig)
+  
+  const rotateX = useTransform(ySpring, [-50, 50], [8, -8])
+  const rotateY = useTransform(xSpring, [-50, 50], [-8, 8])
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return
+    const rect = cardRef.current.getBoundingClientRect()
+    const mouseX = e.clientX - rect.left
+    const mouseY = e.clientY - rect.top
+    const centerX = rect.width / 2
+    const centerY = rect.height / 2
+
+    // Set motion values for rotation
+    x.set(mouseX - centerX)
+    y.set(mouseY - centerY)
+
+    // Calculate percentage for glare
+    const percentX = (mouseX / rect.width) * 100
+    const percentY = (mouseY / rect.height) * 100
+    setGlarePos({ x: percentX, y: percentY })
+  }
+
+  const handleMouseLeave = () => {
+    x.set(0)
+    y.set(0)
+  }
 
   return (
     <motion.article
+      ref={cardRef}
       className={`project-card ${variant}`}
       variants={cardVariants}
       initial="hidden"
       animate="visible"
       exit="exit"
       layout
+      style={{
+        rotateX,
+        rotateY,
+        perspective: 1200
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       whileHover={{
-        y: -4,
+        scale: 1.02,
         transition: { duration: 0.25, ease: [0.2, 0.8, 0.2, 1] },
       }}
     >
+      <div 
+        className="premium-glare-overlay" 
+        style={{
+          background: `radial-gradient(circle at ${glarePos.x}% ${glarePos.y}%, rgba(255, 255, 255, 0.4), transparent 50%)`
+        }}
+      />
       {project.images && project.images.length > 0 ? (
         <div className={`project-artwork tone-${project.accent} ${isCompact ? 'dense' : ''}`} style={{ padding: '2rem', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <img

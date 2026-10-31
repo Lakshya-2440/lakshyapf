@@ -40,6 +40,11 @@ export default function BlogPage() {
                 style={{ height: '100%' }}
               >
                 <Link to={`/blog/${post.slug}`} className="blog-card" style={{ display: 'flex', flexDirection: 'column', height: '100%', padding: '2.5rem', background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3))', border: '1px solid rgba(18, 19, 25, 0.12)', borderRadius: '2rem', textDecoration: 'none', color: 'var(--ink)', transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)', boxShadow: '0 8px 30px rgba(0,0,0,0.04)' }}>
+                  {post.coverImage && (
+                    <div style={{ marginBottom: '1.5rem', borderRadius: '1.25rem', overflow: 'hidden', border: '1px solid rgba(18, 19, 25, 0.08)', aspectRatio: '16/9' }}>
+                      <img src={post.coverImage} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                    </div>
+                  )}
                   <div className="blog-meta-row" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem', fontSize: '0.85rem' }}>
                     <span style={{ color: 'var(--ink-light)', fontWeight: 500 }}>{post.date}</span>
                     <span style={{ color: 'var(--accent-orange)', fontWeight: 600 }}>{post.readTime}</span>

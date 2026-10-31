@@ -591,9 +591,15 @@
   height: 100%;
 }
 
-.philosophy-map-svg line {
-  stroke: rgba(99, 223, 255, 0.22);
-  stroke-width: 0.2;
+.map-link-bg {
+  stroke: rgba(99, 223, 255, 0.15);
+  stroke-width: 0.15;
+}
+
+.map-link-active {
+  stroke: rgba(99, 223, 255, 0.8);
+  stroke-width: 0.35;
+  filter: drop-shadow(0 0 2px rgba(99, 223, 255, 0.5));
 }
 
 .philosophy-map-nodes {
@@ -603,28 +609,50 @@
 .philosophy-node {
   position: absolute;
   transform: translate(-50%, -50%);
-  display: grid;
-  gap: 0.45rem;
-  justify-items: center;
-  color: rgba(219, 235, 255, 0.8);
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.philosophy-node span {
-  width: 1.05rem;
-  height: 1.05rem;
+.philosophy-node-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(2, 10, 28, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(99, 232, 255, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: border-color 0.3s ease;
+}
+
+.philosophy-node:hover .philosophy-node-pill {
+  border-color: rgba(99, 232, 255, 0.6);
+  background: rgba(2, 10, 28, 0.85);
+}
+
+.pulse-dot {
+  width: 0.5rem;
+  height: 0.5rem;
   border-radius: 999px;
   background: #63e8ff;
-  box-shadow:
-    0 0 0 0.28rem rgba(99, 232, 255, 0.12),
-    0 0 0.95rem rgba(99, 232, 255, 0.6);
+  box-shadow: 0 0 8px rgba(99, 232, 255, 0.8);
+  animation: pulse-node 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse-node {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
 }
 
 .philosophy-node strong {
   font-family: var(--font-mono);
-  font-size: 1.05rem;
-  font-weight: 400;
+  font-size: 0.85rem;
+  font-weight: 500;
   letter-spacing: 0.04em;
+  color: #dbebff;
 }
 
 .availability-card-compact {
@@ -1290,6 +1318,33 @@
   color: var(--paper-strong);
 }
 
+/* Premium Pro Max UI Upgrades */
+.glass-deco-pill {
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+.glass-deco-pill:hover {
+  border-color: rgba(255, 75, 43, 0.8) !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 20px 40px rgba(255, 75, 43, 0.2) !important;
+}
+
+.social-snappy-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social-snappy-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.snappy-arrow {
+  color: #ff4b2b;
+  font-weight: 700;
+  display: inline-block;
+}
 
 .connect-layout {
   display: grid;
